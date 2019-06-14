@@ -1,0 +1,14 @@
+This meant when I converted the file into a csv file to upload the details, the csv wasn't reading the barcodes properly and changing them to 52862300000 etc.
+
+To combat it:
+
+Open as an excel sheet (or convert if you can't open as one)
+highlight the (barcode/scientific notation) column
+Go into Data / text to columns
+Page 1: Check 'Delimited' / Next
+Page 2: Check ' Tab' and change 'Text Qualifier' to " / Next
+Page 3: Check 'Text' rather than 'general'
+Finish
+This should convert them all to display as the long number. You can then save it as a CSV file and the numbers won't be converted/formatted into scientific numbers.
+
+Hope this helps!!

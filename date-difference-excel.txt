@@ -1,0 +1,3 @@
+Try this: select the dates > Data > Text to Columns, press Next twice, on the third screen tick Date, Select the appropriate format and click Finish,
+
+to remove leading zeros to subtract the dates.

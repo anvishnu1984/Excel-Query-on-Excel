@@ -1,0 +1,22 @@
+=IF(A2=B2,"Match","Mismatch")   --- match 2 columns
+
+
+=IF(TRIM(M193) =TRIM(AP193),"1","0")   ALWAYS TRIM AND COMPARE DATA.
+
+
+=IF(A1="10x12",120,IF(A1="8x8",64,IF(A1="6x6",36)))   ----> nested if
+
+IF(AND(B6="red",C6="small"),"x","") -- nested if
+
+lookup and check if it is null. if null then put 1 else 0.
+
+=IF(ISNA(S2),"1","0")
+
+C2, E2, G2, I2, K2, N2, P2, S2
+
+=If(ISNA(C2)) &IF(ISNA(E2)) &IF(ISNA(G2)) &IF(ISNA(I2)) &IF(ISNA(K2))  &IF(ISNA(N2)) &IF(ISNA(P2)) &IF(ISNA(S2)) , "I", "")
+
+
+=If(ISNA(C2)) &IF(ISNA(E2)) &IF(ISNA(G2)) &IF(ISNA(I2)) &IF(ISNA(K2))  &IF(ISNA(N2)) &IF(ISNA(P2)) &IF(ISNA(S2)) , "I", "")
+
+=if( ( ISNA(C2),ISNA(E2) ), "Insert", "")

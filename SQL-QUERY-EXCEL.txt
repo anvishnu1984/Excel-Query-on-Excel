@@ -1,0 +1,116 @@
+Data --> from other sources ---> from microsoft query --- > excel files --> select path of file -->
+-->options--->system tables ( enable it) --> complete and say ok... ---> in the browse option
+click on SQL --- frame the query....
+
+SELECT RETURN DATA IN MENU OPTION TO EXPORT BACK TO EXCEL...
+
+
+C:\Users\nanjapa\Desktop\Greyhound-compare
+--------------------------------
+SELECT `Sheet1$`.CUSTNO, `Sheet1$`.CUSTNAME, `Sheet2$`.AMOUNT
+FROM `C:\Users\nanjapa\Desktop\Ashok\Excel\Cust-Table.xlsx`.`Sheet1$` `Sheet1$`, `C:\Users\nanjapa\Desktop\Ashok\Excel\Acct-Table.xlsx`.`Sheet1$` `Sheet2$`
+WHERE `Sheet1$`.CUSTNO = `Sheet2$`.CUSTNO
+---------------------------CORRECT INNER JOIN---------------
+
+SELECT `GHDATA-ONEGOV$`.GREYHOUND_SEQ, `GHDATA-ONEGOV$`.GREYHOUND_NAME, `GHDATA-ONEGOV$`.GREYHOUND_COLOUR_CODE,
+`GHDATA-ONEGOV$`.SEX, `GHDATA-ONEGOV$`.STATUS_DESCRIPTION,
+
+`GHDATA-OZCHASE$`.GREYHOUND_SEQ, `GHDATA-OZCHASE$`.GREYHOUND_NAME, `GHDATA-OZCHASE$`.GREYHOUND_COLOUR_CODE,
+
+`GHDATA-OZCHASE$`.SEX, `GHDATA-OZCHASE$`.STATUS_DESCRIPTION
+
+
+FROM `C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$`, 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$`
+WHERE `GHDATA-ONEGOV$`.GREYHOUND_SEQ = `GHDATA-OZCHASE$`.GREYHOUND_SEQ
+
+---------------------------------COORECT FULL OUTER JOIN)--------------
+
+
+SELECT `GHDATA-ONEGOV$`.GREYHOUND_SEQ, `GHDATA-ONEGOV$`.GREYHOUND_NAME, `GHDATA-ONEGOV$`.GREYHOUND_COLOUR_CODE,
+`GHDATA-ONEGOV$`.SEX, `GHDATA-ONEGOV$`.STATUS_DESCRIPTION,
+
+`GHDATA-OZCHASE$`.GREYHOUND_SEQ, `GHDATA-OZCHASE$`.GREYHOUND_NAME, `GHDATA-OZCHASE$`.GREYHOUND_COLOUR_CODE,
+
+`GHDATA-OZCHASE$`.SEX, `GHDATA-OZCHASE$`.STATUS_DESCRIPTION
+
+
+FROM { oj `C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$` LEFT OUTER JOIN 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$`
+ ON `GHDATA-ONEGOV$`.GREYHOUND_SEQ = `GHDATA-OZCHASE$`.GREYHOUND_SEQ}
+
+
+UNION
+
+SELECT `GHDATA-ONEGOV$`.GREYHOUND_SEQ, `GHDATA-ONEGOV$`.GREYHOUND_NAME, `GHDATA-ONEGOV$`.GREYHOUND_COLOUR_CODE,
+`GHDATA-ONEGOV$`.SEX, `GHDATA-ONEGOV$`.STATUS_DESCRIPTION,
+
+`GHDATA-OZCHASE$`.GREYHOUND_SEQ, `GHDATA-OZCHASE$`.GREYHOUND_NAME, `GHDATA-OZCHASE$`.GREYHOUND_COLOUR_CODE,
+
+`GHDATA-OZCHASE$`.SEX, `GHDATA-OZCHASE$`.STATUS_DESCRIPTION
+
+
+FROM { oj `C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$` LEFT OUTER JOIN 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$` 
+ ON `GHDATA-ONEGOV$`.GREYHOUND_SEQ = `GHDATA-OZCHASE$`.GREYHOUND_SEQ}
+
+
+
+
+
+------------------------------------------
+
+
+
+
+SELECT Color_Table.Join_Field, Color_Table.Color_Field,
+   Pattern_Table.Pattern_Field
+   FROM {oj `C:\database`.Pattern_Table LEFT OUTER JOIN
+   `C:\database`.Color_Table ON Color_Table.Join_Field =
+   Pattern_Table.Join_Field}
+   UNION
+   SELECT Color_Table.Join_Field, Color_Table.Color_Field,
+   Pattern_Table.Pattern_Field
+   FROM {oj `C:\database`.Color_Table LEFT OUTER JOIN
+   `C:\database`.Pattern_Table ON Color_Table.Join_Field =
+   Pattern_Table.Join_Field}
+
+
+-----------
+
+SELECT `GHDATA-ONEGOV$`.GREYHOUND_SEQ, `GHDATA-ONEGOV$`.GREYHOUND_NAME, `GHDATA-ONEGOV$`.GREYHOUND_COLOUR_CODE,
+`GHDATA-ONEGOV$`.SEX, `GHDATA-ONEGOV$`.STATUS_DESCRIPTION,
+
+`GHDATA-OZCHASE$`.GREYHOUND_SEQ, `GHDATA-OZCHASE$`.GREYHOUND_NAME, `GHDATA-OZCHASE$`.GREYHOUND_COLOUR_CODE,
+
+`GHDATA-OZCHASE$`.SEX, `GHDATA-OZCHASE$`.STATUS_DESCRIPTION
+
+
+FROM `C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$`, 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$`
+WHERE `GHDATA-ONEGOV$`.GREYHOUND_SEQ += `GHDATA-OZCHASE$`.GREYHOUND_SEQ
+
+
+--------------------------
+SELECT *
+
+FROM { oj `C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$` LEFT OUTER JOIN 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$`
+ ON `GHDATA-ONEGOV$`.GREYHOUND_SEQ = `GHDATA-OZCHASE$`.GREYHOUND_SEQ}
+
+
+UNION
+
+SELECT *
+
+
+FROM { oj `C:\Users\nanjapa\Desktop\Greyhound-compare\GH_OZCHS_SQL.xlsx`.`GHDATA-OZCHASE$` `GHDATA-OZCHASE$` LEFT OUTER JOIN 
+`C:\Users\nanjapa\Desktop\Greyhound-compare\GHOneGVdata_SQL.xlsx`.`GHDATA-ONEGOV$` `GHDATA-ONEGOV$` 
+ ON `GHDATA-ONEGOV$`.GREYHOUND_SEQ = `GHDATA-OZCHASE$`.GREYHOUND_SEQ}
+
+
+
+
+
+
+
